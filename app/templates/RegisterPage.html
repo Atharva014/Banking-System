@@ -1,0 +1,154 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div>
+    <div>
+        <nav class="navbar bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand">Bank Management System</a>
+                <form class="d-flex" role="search" action="/" method="post">
+                    <button class="btn btn-outline-primary" type="submit">Login</button>
+                </form>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <form action="/Process" method="post">
+            <br>
+
+                {% if error != "None" %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for e in error %}
+                            {{ e }}<br>
+                        {% endfor%}
+                    </div>
+                {% endif %}
+
+            <h1 class="text-center">Registration Form </h1> 
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Full Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="uname" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Birth Date</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" name="bdate" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" name="email" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Gender</label>
+                <div class="col-sm-10">
+                    <select class="form-select" aria-label="Default select example" name="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Phone No</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" name="pno" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Address</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="address" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Country</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="country" required>
+                </div>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">State</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="state" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">City</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="city" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Postal Code</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" name="pcode" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Account Type</label>
+                <div class="col-sm-10">
+                    <select class="form-select" aria-label="Default select example" name = "atype">
+                        <option value="Salary">Salary</option>
+                        <option value="Current">Current</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Pin</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" name="pin1" maxlength="4" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Pin Again</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" name="pin2" maxlength="4" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" name="pass1" required>
+                    <small id="passwordHelpInline" class="text-muted">
+                        Must be 8-20 characters long.
+                    </small>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" name="pass2" required>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary text-center">Register</button><br><br>
+            </div>
+
+            <input type="hidden" value="0" name="hiddenValue">
+        </form>
+    </div>
+
+</div>
+{% endblock content %}

@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div>
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand">Welcome {{ name }}</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                </ul>
+                <form class="d-flex" role="search" action="/Dashboard/Logout" method="post">
+                    <button class="btn btn-outline-primary" type="submit">Logout</button>
+                </form>
+            </div>
+
+        </div>
+    </nav>
+</div>
+
+<div class="row mt-1 m-1">
+
+    <div class="col -4 m-1 border">
+        <div>
+            <div class="card mt-4">
+
+                <div class="card-header text-center">
+                    <h5>Account Summary</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table text-start">
+                        <tr>
+                            <td class="col-6">
+                                Account No
+                            </td>
+                            <td class="col-6">
+                                <p>: {{ data['acc_no'] }}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-6">
+                                Account Type
+                            </td>
+                            <td class="col-6">
+                                <p>: {{ data['acc_type'] }}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-6">
+                                Amount
+                            </td>
+                            <td class="col-6">
+                                <p>: {{ data['amount'] }}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-8 m-1 border center">
+        <!--    Card layout-->
+        <table class=" mt-2 mb-"
+               style="border-collapse: separate; border-spacing: 0 0.5em; margin-left: auto; margin-right: auto;">
+
+            <tr class="mb-3">
+                <td style="padding: 5px;">
+                    <div class="card text-center" style="width: 16rem; height: 15rem;">
+                        <img src="{{ url_for('.static', filename='SendMoney.jpg') }}" class="card-img-top mx-auto"
+                             alt="..." style="width:80% ">
+                        <div class="card-body">
+                            <a href="/Dashboard/SendMoney" class="btn btn-primary">Send Money</a>
+                        </div>
+                    </div>
+                </td>
+
+                <td style="padding: 5px;">
+                    <div class="card text-center" style="width: 16rem; height: 15rem;">
+                        <img src="{{ url_for('.static', filename='DepositMoney.jpg') }}"
+                             class="card-img-top mx-auto" alt="..." style="width:80% ">
+                        <div class="card-body">
+                            <a href="/Dashboard/DepositMoney" class="btn btn-primary">Deposit Money</a>
+                        </div>
+                    </div>
+                </td>
+
+                <td style="padding: 5px;">
+                    <div class="card text-center" style="width: 16rem; height: 15rem;">
+                        <img src="{{ url_for('.static', filename='WithdrawMoney.jpg') }}" class="card-img-top mx-auto"
+                             alt="..." style="width:80% ">
+                        <div class="card-body">
+                            <a href="/Dashboard/WithdrawMoney" class="btn btn-primary">Withdraw Money</a>
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+            <!---------------------------------------------------------------------------------------------------------------------------->
+            <tr>
+                <td style="padding: 5px;">
+                    <div class="card text-center" style="width: 16rem; height: 15rem;">
+                        <img src="{{ url_for('.static', filename='TransactionHistory.jpg') }}"
+                             class="card-img-top mx-auto"
+                             alt="..." style="width:80% ">
+                        <div class="card-body">
+                            <a href="/Dashboard/TransactionHistory" class="btn btn-primary">Transaction History</a>
+                        </div>
+                    </div>
+                </td>
+
+                <td style="padding: 5px;">
+                    <div class="card text-center" style="width: 16rem; height: 15rem;">
+                        <img src="{{ url_for('.static', filename='MyInformation.jpg') }}" class="card-img-top mx-auto"
+                             alt="..." style="width:80% ">
+                        <div class="card-body">
+                            <a href="/Dashboard/MyInformation" class="btn btn-primary">My Information</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+</div>
+
+{% endblock content %}

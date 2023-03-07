@@ -1,0 +1,144 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages(category_filter=["success"]) %}
+{% if messages %}
+<div class="alert alert-success" role="alert">
+    {% for message in messages %}
+    <p class="text-center">{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
+{% with messages = get_flashed_messages(category_filter=["error"]) %}
+{% if messages %}
+<div class="alert alert-danger" role="alert">
+    {% for message in messages %}
+    <p class="text-center">{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
+
+<div>
+
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('Dashboard.Dashboard') }}">Home</a>
+            <form class="d-flex" role="search" action="/MoneyTran/Logout" method="post">
+                <button class="btn btn-outline-primary" type="submit">Logout</button>
+            </form>
+        </div>
+    </nav>
+
+</div>
+
+<div class="mt-2">
+    <div>
+        <div class="card m-4">
+            <div class="card-header text-start">
+                <h5>Your Account Summary</h5>
+            </div>
+            <div class="card-body text-center">
+                <table class="table text-start">
+                    <tr>
+                        <td class="col-6">
+                            Account No
+                        </td>
+                        <td class="col-6">
+                            <p>: {{ data['acc_no'] }}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-6">
+                            Account Type
+                        </td>
+                        <td class="col-6">
+                            <p>: {{ data['acc_type'] }}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-6">
+                            Amount
+                        </td>
+                        <td class="col-6">
+                            <p>: {{ data['amount'] }}</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="card mt-4 me-4 ms-4">
+        <div class="card-header text-start">
+            <h5>Send Money</h5>
+        </div>
+    </div>
+
+    <div>
+        <div class="card mt-1 mb-4 me-4 ms-4">
+            <div class="card-body">
+
+                <form action="/MoneyTran/SendMoney" method="post">
+                    <table class="table table-borderless">
+                        <tr>
+                            <td class="text-right">
+                                <p class="card-text">Enter Receivers Account Number </p>
+                            </td>
+                            <td>
+                                <input class="form-control form-control-sm" type="number" name="racc_no" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="card-text">Enter Receivers Name </p>
+                            </td>
+                            <td>
+                                <input class="form-control form-control-sm" type="text" name="racc_name" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="card-text">Enter Amount </p>
+                            </td>
+                            <td>
+                                <input class="form-control form-control-sm" type="number" name="amount" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="card-text">Enter Pin </p>
+                            </td>
+                            <td>
+                                <input class="form-control form-control-sm" type="password" name="pin1" maxlength="4"
+                                       required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="card-text">Enter Pin Again</p>
+                            </td>
+                            <td>
+                                <input class="form-control form-control-sm" type="password" name="pin2" maxlength="4"
+                                       required>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-primary text-center" value="Send">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
